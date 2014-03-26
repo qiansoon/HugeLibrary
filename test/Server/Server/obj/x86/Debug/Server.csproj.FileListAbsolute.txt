@@ -1,0 +1,5 @@
+E:\QsProjects\HugeLibrary\test\Server\Server\obj\x86\Debug\ResolveAssemblyReference.cache
+E:\QsProjects\HugeLibrary\test\Server\Server\bin\Debug\Server.exe
+E:\QsProjects\HugeLibrary\test\Server\Server\bin\Debug\Server.pdb
+E:\QsProjects\HugeLibrary\test\Server\Server\obj\x86\Debug\Server.exe
+E:\QsProjects\HugeLibrary\test\Server\Server\obj\x86\Debug\Server.pdb
