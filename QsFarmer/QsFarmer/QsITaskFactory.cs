@@ -18,16 +18,24 @@ namespace QsFarmer
 
 	public class QsTaskFactory
 	{
-		public static 
+		private static QsITaskProcessorFactory processorFactoryArray = new QsITaskProcessorFactory[QsTaskType.QsETaskBoundary]{null, QsFarmerRegisterTaskProcessor};
+		//public static List<QsITaskProcessorFactory> processorFactoryList = new List<QsITaskProcessorFactory>(new QsITaskProcessorFactory[]{QsFarmerRegisterTaskProcessor});
 		public static QsITaskProcessorFactory CreateFactory(string taskType)
 		{
 			Type t = Type.GetType(taskType);
 			return Activator.CreateInstance(t) as QsITaskProcessorFactory;
 		}
+		
+		public static QsITaskProcessorFactory CreateFactory(QsTaskType taskType)
+		{
+			if (taskType >= QsTaskType.QsETaskBoundary)
+				return null;
+			return processorFactoryArray[taskType].CreateTaskProcessor() as QsITaskProcessorFactory;
+		}
 	}
 
     public interface QsITaskProcessorFactory
     {
-		QsITaskProcessor CreateTaskProcessor();
+		public QsITaskProcessor CreateTaskProcessor();
     }
 }
