@@ -20,10 +20,10 @@ namespace Farmer
 		private QsPackageHeader header;
 		private QsPackageData data;
 		
-		public void SetIPAndPort(int ip, int port)
+		public void SetIPAndPort(int farmerIP, int farmerPort)
 		{
-			this.ip = ip;
-			this.port = port;
+			this.ip = farmerIP;
+			this.port = farmerPort;
 		}
 	
 		public int UnPack(QsPackageHeader header, QsPackageData data)
@@ -44,7 +44,7 @@ namespace Farmer
 			BitConverter.GetBytes(port).CopyTo(buffer, 4);
 			
 			data = new QsPackageData(buffer);
-			header = new QsPackageHeader(0x1, data);
+			header = new QsPackageHeader((int)QsTaskType.QsETaskFarmerRegister, data);
 		}
 	}
 }
