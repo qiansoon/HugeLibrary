@@ -17,6 +17,8 @@ namespace Farmer
 	{
 		private int port;
 		private int ip;
+		private QsPackageHeader header;
+		private QsPackageData data;
 		
 		public void SetIPAndPort(int ip, int port)
 		{
@@ -31,12 +33,17 @@ namespace Farmer
 	
 		public void Run()
 		{
-			
+			QsNetIOSender("127.0.0.1", 5252, header, data);
 		}
 		
 		public void Pack()
 		{
+			byte[] buffer = new byte[8];
+			BitConverter.GetBytes(ip).CopyTo(buffer, 0);
+			BitConverter.GetBytes(port).CopyTo(buffer, 4);
 			
+			data = new QsPackageData(buffer);
+			header = new QsPackageHeader(0x1, data);
 		}
 	}
 }
