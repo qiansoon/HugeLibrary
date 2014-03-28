@@ -33,7 +33,8 @@ namespace Farmer
 	
 		public void Run()
 		{
-			QsNetIOSender("127.0.0.1", 5252, header, data);
+			QsNetIOSender sender = new QsNetIOSender("127.0.0.1", 5252, header, data);
+			sender.Send();
 		}
 		
 		public void Pack()
