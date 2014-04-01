@@ -140,8 +140,14 @@ namespace QsFarmer
                 else
                 {
                     //Finish package receiving. Then process package.
-                    QsTaskProcess processTask = new QsDisplayClientContent(header, data);
-                    processTask.Process();
+                    QsITaskFactory taskFactory = QsTaskFactory.CreateFactory((QsTaskType)header.GetCmdType());
+                    QsITaskProcessor processTask = taskFactory.CreateTaskProcessor();
+                    if (processTask.UnPack(header, data) != 0)
+                    {
+                        return;
+                    }
+                    else
+                        processTask.Run();
                 }
             }
         }

@@ -9,5 +9,6 @@ namespace QsFarmer
     {
 		public int UnPack(QsPackageHeader header, QsPackageData data);
         public void Run();
+        public void Pack();
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Farmer
+namespace QsFarmer
 {
-	public class QsFarmerRegisterTaskProcessorFactory : QsITaskProcessorFactory
+    public class QsFarmerRegisterTaskProcessorFactory : QsITaskFactory
 	{
 		public QsITaskProcessor CreateTaskProcessor()
 		{
@@ -44,7 +44,7 @@ namespace Farmer
 			BitConverter.GetBytes(port).CopyTo(buffer, 4);
 			
 			data = new QsPackageData(buffer);
-			header = new QsPackageHeader((int)QsTaskType.QsETaskFarmerRegister, data);
+            header = new QsPackageHeader((int)QsFarmer.QsITaskFactory.QsTaskType.QsETaskFarmerRegister, data);
 		}
 	}
 }
