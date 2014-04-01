@@ -7,6 +7,7 @@ namespace QsFarmer
 {
     public interface QsITaskProcessor
     {
-        public void Run(QsPackageHeader header, QsPackageData data);
+		public int UnPack(QsPackageHeader header, QsPackageData data);
+        public void Run();
     }
 }
